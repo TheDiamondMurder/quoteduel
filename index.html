@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quote Duel | jakublabs.xyz</title>
+    <link rel="stylesheet" href="styles.css?v=6" />
+  </head>
+  <body>
+    <main class="app" aria-labelledby="page-title">
+      <section class="hero">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>quoteduel.jakublabs.xyz</span>
+        </div>
+        <p class="kicker">chat bracket warfare</p>
+        <h1 id="page-title">Quote Duel</h1>
+        <p class="lede">upload a WhatsApp export, pull 32 quotes, and crown the most insane message</p>
+      </section>
+
+      <section class="panel setup-panel" id="setup-panel">
+        <form id="setup-form">
+          <div class="setup-copy">
+            <p class="kicker">setup</p>
+            <h2>start the bracket</h2>
+            <p>32 quotes. 5 rounds. one champion message.</p>
+            <button class="button button-light" type="submit">Generate Bracket</button>
+          </div>
+
+          <div class="setup-options">
+            <label class="field">
+              <span>players</span>
+              <input id="player-count" type="number" min="1" max="12" value="4" required />
+            </label>
+
+            <div class="upload-controls">
+              <label class="file-button">
+                <input id="chat-file" type="file" accept=".txt,text/plain" required />
+                <span>Choose Export</span>
+              </label>
+              <span class="file-name" id="file-name">No file selected</span>
+            </div>
+
+            <div class="players-list" id="players-list"></div>
+          </div>
+        </form>
+        <p id="parse-status" class="status"></p>
+      </section>
+
+      <section class="panel duel-panel" id="duel-panel" hidden>
+        <div class="duel-topline">
+          <div>
+            <p class="kicker" id="round-label">round of 32</p>
+            <h2 id="match-label">match 1</h2>
+          </div>
+          <div class="turn-pill" id="turn-label">Player 1 voting</div>
+        </div>
+
+        <div class="duel-grid" id="duel-grid"></div>
+
+        <div class="handoff-screen" id="handoff-screen" hidden>
+          <p class="kicker">next vote</p>
+          <h2 id="handoff-title">are you ready to vote?</h2>
+          <button class="button button-light" id="ready-button" type="button">Ready</button>
+        </div>
+
+        <div class="handoff-screen result-ready-screen" id="result-ready-screen" hidden>
+          <p class="kicker">votes locked</p>
+          <h2>the results are ready</h2>
+          <button class="button button-light" id="show-results" type="button">Show Results</button>
+        </div>
+
+        <div class="duel-actions">
+          <p id="vote-status" class="status"></p>
+        </div>
+      </section>
+
+      <section class="panel results-panel" id="results-panel" hidden>
+        <div class="results-announcement">
+          <p class="kicker">results</p>
+          <h2 id="winner-title">winner revealed</h2>
+          <p id="winner-subtitle"></p>
+          <p class="countdown" id="results-countdown"></p>
+        </div>
+        <div class="result-bars" id="result-bars"></div>
+        <button class="button button-light" id="next-match" type="button">Next Match</button>
+      </section>
+
+      <section class="panel champion-panel" id="champion-panel" hidden>
+        <p class="kicker">champion quote</p>
+        <h2>the winner</h2>
+        <blockquote id="champion-quote"></blockquote>
+        <p id="champion-meta"></p>
+        <button class="button button-light" id="restart" type="button">Run It Back</button>
+      </section>
+    </main>
+
+    <script src="script.js?v=5"></script>
+  </body>
+</html>
